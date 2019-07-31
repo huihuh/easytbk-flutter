@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "GeneratedPluginRegistrant.h"
+#include <AlibcTradeSDK/AlibcTradeSDK.h>
 
 @implementation AppDelegate
 

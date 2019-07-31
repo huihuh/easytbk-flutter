@@ -1,10 +1,12 @@
+//
+// Created by mo on 2018/11/22.
+//
+
+#import "NautilusLoginService.h"
+#import "NautilusConstants.h"
 
 
-#import "EasytbkLoginService.h"
-#import "EasytbkConstants.h"
-
-
-@implementation EasytbkLoginService
+@implementation NautilusLoginService
 
 
 - (void)handleGetUser:(FlutterMethodCall *)call result:(FlutterResult)result {
@@ -23,8 +25,8 @@
         };
     }
     result(@{
-            easytbkKeyPlatform: easytbkKeyIOS,
-            easytbkKeyResult: @(isLogin),
+            nautilusKeyPlatform: nautilusKeyIOS,
+            nautilusKeyResult: @(isLogin),
             @"user": user
     });
 }
@@ -39,8 +41,8 @@
 
     [[ALBBSDK sharedInstance] auth:rootViewController successCallback:^(ALBBSession *session) {
         result(@{
-                easytbkKeyPlatform: easytbkKeyIOS,
-                easytbkKeyResult: @YES,
+                nautilusKeyPlatform: nautilusKeyIOS,
+                nautilusKeyResult: @YES,
                 @"user": @{
                         @"avatarUrl": [session getUser].avatarUrl,
                         @"nick": [session getUser].nick,
@@ -52,10 +54,10 @@
         });
     }              failureCallback:^(ALBBSession *session, NSError *error) {
         result(@{
-                easytbkKeyPlatform: easytbkKeyIOS,
-                easytbkKeyResult: @NO,
-                easytbkKeyErrorCode: @(error.code),
-                easytbkKeyErrorMessage: error.description
+                nautilusKeyPlatform: nautilusKeyIOS,
+                nautilusKeyResult: @NO,
+                nautilusKeyErrorCode: @(error.code),
+                nautilusKeyErrorMessage: error.description
         });
     }];
 
@@ -65,8 +67,8 @@
 - (void)handleLogout:(FlutterResult)result {
     [[ALBBSDK sharedInstance] logout];
     result(@{
-        easytbkKeyPlatform:easytbkKeyIOS,
-        easytbkKeyResult:@YES
+        nautilusKeyPlatform:nautilusKeyIOS,
+        nautilusKeyResult:@YES
     });
 }
 

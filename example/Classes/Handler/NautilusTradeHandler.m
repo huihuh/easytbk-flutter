@@ -1,11 +1,13 @@
+//
+// Created by mo on 2018/11/23.
+//
 
-
-#import "EasytbkTradeHandler.h"
+#import "NautilusTradeHandler.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
-#import "EasytbkStringUtil.h"
-#import "EasytbkConstants.h"
+#import "NautilusStringUtil.h"
+#import "NautilusConstants.h"
 
-@implementation EasytbkTradeHandler
+@implementation NautilusTradeHandler
 
 - (void)initTradeAsync:(FlutterMethodCall *)call result:(FlutterResult)result {
     BOOL debuggable = [call.arguments[@"debuggable"] boolValue];
@@ -13,15 +15,15 @@
     NSString *version = call.arguments[@"version"];
 
     [[AlibcTradeSDK sharedInstance] setDebugLogOpen:debuggable];//开发阶段打开日志开关，方便排查错误信息
-    if (![EasytbkStringUtil isBlank:version]) {
+    if (![NautilusStringUtil isBlank:version]) {
         [[AlibcTradeSDK sharedInstance] setIsvVersion:version];
     }
 
 
     [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
-        result(@{easytbkKeyPlatform: easytbkKeyIOS, easytbkKeyResult: @YES});
+        result(@{nautilusKeyPlatform: nautilusKeyIOS, nautilusKeyResult: @YES});
     }                                            failure:^(NSError *error) {
-        result(@{easytbkKeyPlatform: easytbkKeyIOS, easytbkKeyResult: @NO, easytbkKeyErrorCode: @(error.code), easytbkKeyErrorMessage: error.description});
+        result(@{nautilusKeyPlatform: nautilusKeyIOS, nautilusKeyResult: @NO, nautilusKeyErrorCode: @(error.code), nautilusKeyErrorMessage: error.description});
     }];
 
 }
@@ -66,8 +68,8 @@
         if (tradeProcessResult.result == AlibcTradeResultTypePaySuccess) {
             result(@{
                     @"openResultCode": @(openResultCode),
-                    easytbkKeyPlatform: easytbkKeyIOS,
-                    easytbkKeyResult: @YES,
+                    nautilusKeyPlatform: nautilusKeyIOS,
+                    nautilusKeyResult: @YES,
                     @"tradeResultType": @0,
                     @"paySuccessOrders": [tradeProcessResult payResult].paySuccessOrders,
                     @"payFailedOrders": [tradeProcessResult payResult].payFailedOrders
@@ -76,15 +78,15 @@
 
             result(@{
                     @"openResultCode": @(openResultCode),
-                    easytbkKeyPlatform: easytbkKeyIOS,
-                    easytbkKeyResult: @YES,
+                    nautilusKeyPlatform: nautilusKeyIOS,
+                    nautilusKeyResult: @YES,
                     @"tradeResultType": @1,
             });
         } else{
             result(@{
                     @"openResultCode": @(openResultCode),
-                    easytbkKeyPlatform: easytbkKeyIOS,
-                    easytbkKeyResult: @YES,
+                    nautilusKeyPlatform: nautilusKeyIOS,
+                    nautilusKeyResult: @YES,
                     @"tradeResultType": @-1,
             });
         }
@@ -107,10 +109,10 @@
 
         result(@{
                 @"openResultCode": @(openResultCode),
-                easytbkKeyPlatform: easytbkKeyIOS,
-                easytbkKeyResult: @NO,
-                easytbkKeyErrorCode: @(error.code),
-                easytbkKeyErrorMessage: jsonString,
+                nautilusKeyPlatform: nautilusKeyIOS,
+                nautilusKeyResult: @NO,
+                nautilusKeyErrorCode: @(error.code),
+                nautilusKeyErrorMessage: jsonString,
         });
 
     };

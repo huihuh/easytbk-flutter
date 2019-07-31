@@ -22,8 +22,10 @@ class _MyAppState extends State<MyApp> {
 
   // 初始化阿里百川
   Future<void> initTradeService() async {
+     print("阿里百川授权开始");
     await easytbk.initTradeAsync(debuggable: false).then((data) {
       print(data);
+      print("阿里百川授权结束");
     });
   }
 

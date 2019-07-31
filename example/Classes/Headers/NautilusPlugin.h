@@ -1,8 +1,8 @@
 #import <Flutter/Flutter.h>
-#import "EasytbkLoginService.h"
-#import "EasytbkTradeHandler.h"
+#import "NautilusLoginService.h"
+#import "NautilusTradeHandler.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
-@interface EasytbkPlugin : NSObject<FlutterPlugin>
+@interface NautilusPlugin : NSObject<FlutterPlugin>
 
 - (instancetype)initWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar;
 @end

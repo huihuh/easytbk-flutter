@@ -1,17 +1,17 @@
-#import "EasytbkPlugin.h"
+#import "NautilusPlugin.h"
 
 
-@implementation EasytbkPlugin
+@implementation NautilusPlugin
 
-EasytbkLoginService *_loginService;
-EasytbkTradeHandler *_tradeHandler;
+NautilusLoginService *_loginService;
+NautilusTradeHandler *_tradeHandler;
 
 
 + (void)registerWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar {
     FlutterMethodChannel *channel = [FlutterMethodChannel
-            methodChannelWithName:@"easytbk"
+            methodChannelWithName:@"com.jarvanmo/nautilus"
                   binaryMessenger:[registrar messenger]];
-    EasytbkPlugin *instance = [[EasytbkPlugin alloc] initWithRegistrar:registrar];
+    NautilusPlugin *instance = [[NautilusPlugin alloc] initWithRegistrar:registrar];
     [registrar addMethodCallDelegate:instance channel:channel];
     [registrar addApplicationDelegate:instance];
 }
@@ -20,8 +20,8 @@ EasytbkTradeHandler *_tradeHandler;
     self = [super init];
 
     if (self) {
-        _loginService = [[EasytbkLoginService alloc] init];
-        _tradeHandler = [[EasytbkTradeHandler alloc] init];
+        _loginService = [[NautilusLoginService alloc] init];
+        _tradeHandler = [[NautilusTradeHandler alloc] init];
     }
 
     return self;
@@ -42,8 +42,6 @@ EasytbkTradeHandler *_tradeHandler;
         [_tradeHandler openItemDetail:call result:result];
     } else if([@"openUrl" isEqualToString:call.method]){
         [_tradeHandler openUrl:call result:result];
-    }else if ([@"getPlatformVersion" isEqualToString:call.method]) {
-        result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
     }else{
         result(FlutterMethodNotImplemented);
     }

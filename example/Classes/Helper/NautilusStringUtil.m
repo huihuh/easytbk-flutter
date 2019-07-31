@@ -2,10 +2,10 @@
 // Created by mo on 2018/8/15.
 //
 
-#import "EasytbkStringUtil.h"
+#import "NautilusStringUtil.h"
 
 
-@implementation EasytbkStringUtil
+@implementation NautilusStringUtil
 
 + (BOOL) isBlank:(NSString *)string {
 
