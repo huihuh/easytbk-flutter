@@ -78,7 +78,7 @@ dependencies {
     implementation 'com.alimama.tunion.sdk:tuniontradesdk:0.3.2@aar'
 
     //电商SDK
-    implementation 'com.alibaba.sdk.android:alibc_trade_common:3.1.1.221'
-    implementation 'com.alibaba.sdk.android:alibc_trade_biz:3.1.1.221'
-    implementation 'com.alibaba.sdk.android:alibc_trade_sdk:3.1.1.221'
+    implementation 'com.alibaba.sdk.android:alibc_trade_common:3.1.1.210'
+    implementation 'com.alibaba.sdk.android:alibc_trade_biz:3.1.1.210'
+    implementation 'com.alibaba.sdk.android:alibc_trade_sdk:3.1.1.210'
 }
