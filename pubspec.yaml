@@ -2,7 +2,7 @@ name: easytbk
 description: A new flutter plugin project.
 version: 0.0.1
 author: Debug <515343908@qq.com>
-homepage: https://github.com/OpenFlutter/nautilus
+homepage: https://github.com/niugengyun/easytbk-flutter.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
