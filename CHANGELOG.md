@@ -1,3 +1,7 @@
+## 0.0.2
+
+* 集成阿里百川sdk.
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* 项目框架初始化，该版本不要下载.

@@ -1,13 +1,5 @@
-import 'dart:async';
+library easytbk;
 
-import 'package:flutter/services.dart';
-
-class Easytbk {
-  static const MethodChannel _channel =
-      const MethodChannel('easytbk');
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-}
+export 'taobao/login_service.dart';
+export 'taobao/trade_sdk.dart';
+export 'taobao/main.dart';

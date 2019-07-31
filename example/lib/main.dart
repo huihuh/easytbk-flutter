@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:flutter/services.dart';
-import 'package:easytbk/easytbk.dart';
+import 'package:easytbk/easytbk.dart' as easytbk;
 
 void main() => runApp(MyApp());
 
@@ -18,6 +17,14 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    initTradeService();
+  }
+
+  // 初始化阿里百川
+  Future<void> initTradeService() async {
+    await easytbk.initTradeAsync(debuggable: false).then((data) {
+      print(data);
+    });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -25,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await Easytbk.platformVersion;
+      platformVersion = await easytbk.platformVersion();
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -48,7 +55,47 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            children: <Widget>[
+              Text('Running on: $_platformVersion\n'),
+              FlatButton(
+                onPressed: () {
+                  easytbk.login().then((data) {
+                    print(data);
+                  });
+                },
+                child: Text("淘宝授权"),
+              ),
+              FlatButton(
+                onPressed: () {
+                  easytbk.openItemDetail(
+                    itemID: "590134648441",
+                    taoKeParams: easytbk.TaoKeParams(
+                      unionId: "",
+                      subPid: "mm_1111_222_333",
+                      pid: "mm_1111_222_333",
+                      adzoneId: "1234",
+                    ),
+                  );
+                },
+                child: Text("打开淘宝详情"),
+              ),
+              FlatButton(
+                onPressed: () {
+                  easytbk.openUrl(
+                    pageUrl: "https://m.taobao.com",
+                    taoKeParams: easytbk.TaoKeParams(
+                      unionId: "",
+                      subPid: "mm_1111_222_333",
+                      pid: "mm_1111_222_333",
+                      adzoneId: "1234",
+                    ),
+                  );
+                },
+                child: Text("打开淘宝Url"),
+              )
+            ],
+          ),
         ),
       ),
     );
