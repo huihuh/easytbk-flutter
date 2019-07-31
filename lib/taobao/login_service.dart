@@ -6,8 +6,13 @@ class User {
   final String topAccessToken;
   final String topAuthCode;
 
-
-  User({this.avatarUrl, this.nick, this.openId, this.openSid,this.topAccessToken,this.topAuthCode});
+  User(
+      {this.avatarUrl,
+      this.nick,
+      this.openId,
+      this.openSid,
+      this.topAccessToken,
+      this.topAuthCode});
 }
 
 class LoginResult {
@@ -24,4 +29,3 @@ class LoginResult {
       this.errorMessage,
       this.user});
 }
-

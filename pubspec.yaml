@@ -1,11 +1,13 @@
 name: easytbk
-description: 淘客阿里百川sdk.
-version: 0.0.2
+description:  A Flutter Alibaichuan sdk plugin .
+version: 0.2.1
 author: Debug <515343908@qq.com>
 homepage: https://github.com/niugengyun/easytbk-flutter.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.5.0 <2.0.0"
+
 
 dependencies:
   flutter:
