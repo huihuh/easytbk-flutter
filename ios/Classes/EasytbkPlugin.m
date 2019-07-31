@@ -11,7 +11,9 @@ EasytbkTradeHandler *_tradeHandler;
       methodChannelWithName:@"easytbk"
             binaryMessenger:[registrar messenger]];
   EasytbkPlugin* instance = [[EasytbkPlugin alloc] init];
-  [registrar addMethodCallDelegate:instance channel:channel];
+//   [registrar addMethodCallDelegate:instance channel:channel];
+  [registrar addApplicationDelegate:instance];
+
 }
 
 // 初始化
