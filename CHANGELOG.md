@@ -1,3 +1,7 @@
+## 0.2.4
+
+* IOS不用重写AppDelegate
+
 ## 0.2.3
 
 * IOS不用重写AppDelegate
